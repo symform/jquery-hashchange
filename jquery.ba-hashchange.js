@@ -1,5 +1,7 @@
 /*!
  * jQuery hashchange event - v1.4 - 7/24/2013
+ * https://github.com/symform/jquery-hashchange
+ * Forked from:
  * http://benalman.com/projects/jquery-hashchange-plugin/
  * 
  * Copyright (c) 2010 "Cowboy" Ben Alman
@@ -59,7 +61,7 @@
 // 
 // About: Release History
 //
-// 1.4   - (7/24/2013) Replaced jquery mise check (removed in 1.9) with a
+// 1.4   - (7/24/2013) (Author: michael@symform.com) Replaced jquery mise check (removed in 1.9) with a
 //         check based on conditional comments.
 // 1.3   - (7/21/2010) Reorganized IE6/7 Iframe code to make it more
 //         "removable" for mobile-only development. Added IE6/7 document.title
