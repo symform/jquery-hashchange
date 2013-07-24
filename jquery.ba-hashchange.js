@@ -9,7 +9,7 @@
 
 // Script: jQuery hashchange event
 //
-// *Version: 1.3, Last updated: 7/21/2010*
+// *Version: 1.4, Last updated: 7/24/2013*
 // 
 // Project Home - http://benalman.com/projects/jquery-hashchange-plugin/
 // GitHub       - http://github.com/cowboy/jquery-hashchange/
@@ -58,7 +58,9 @@
 // event, but not report that it does, the fallback polling loop will be used.
 // 
 // About: Release History
-// 
+//
+// 1.4   - (7/24/2013) Replaced jquery mise check (removed in 1.9) with a
+//         check based on conditional comments.
 // 1.3   - (7/21/2010) Reorganized IE6/7 Iframe code to make it more
 //         "removable" for mobile-only development. Added IE6/7 document.title
 //         support. Attempted to make Iframe as hidden as possible by using
@@ -297,7 +299,16 @@
     // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
     // vvvvvvvvvvvvvvvvvvv REMOVE IF NOT SUPPORTING IE6/7/8 vvvvvvvvvvvvvvvvvvv
     // vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-    $.browser.msie && !supports_onhashchange && (function(){
+    
+    // Returns true if browser is ie 5 - 9 and false otherwise
+    // Based off code from here: https://gist.github.com/padolsey/527683
+    var isIE5To9 = (function() {
+      var div = document.createElement('div');
+      div.innerHTML = '<!--[if IE]><i></i><![endif]-->';
+      return !!div.getElementsByTagName('i')[0];
+    }());
+    
+    isIE5To9 && !supports_onhashchange && (function(){
       // Not only do IE6/7 need the "magical" Iframe treatment, but so does IE8
       // when running in "IE7 compatibility" mode.
       
